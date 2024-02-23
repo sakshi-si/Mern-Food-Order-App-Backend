@@ -1,3 +1,5 @@
+//image size should be less than 5mb for manage restaurant image upload
+
 import express, { Request, Response } from "express";
 import cors from "cors";
 import "dotenv/config";
@@ -7,6 +9,9 @@ import { v2 as cloudinary } from "cloudinary";
 import myRestaurantRoute from "./routes/MyRestaurantRoute";
 import restaurantRoute from "./routes/RestaurantRoute";
 import orderRoute from "./routes/OrderRoute";
+
+
+
 
 mongoose
   .connect(process.env.MONGODB_CONNECTION_STRING as string)
@@ -29,6 +34,9 @@ app.use(express.json());
 app.get("/health", async (req: Request, res: Response) => {
   res.send({ message: "health OK!" });
 });
+
+
+
 
 app.use("/api/my/user", myUserRoute);
 app.use("/api/my/restaurant", myRestaurantRoute);
